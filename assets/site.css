@@ -59,12 +59,16 @@ button, input, textarea { font: inherit; }
 .policy-note { margin-top: 18px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; color: var(--muted); background: var(--surface); font-size: 12px; }
 .policy-list { display: grid; gap: 8px; }
 .policy-item { overflow: hidden; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
-.policy-item summary { display: grid; grid-template-columns: 36px 1fr 18px; align-items: center; gap: 10px; padding: 15px 17px; cursor: pointer; list-style: none; }
+.policy-item summary { display: grid; grid-template-columns: 36px 1fr 28px; align-items: center; gap: 10px; padding: 14px 17px; cursor: pointer; list-style: none; -webkit-tap-highlight-color: transparent; transition: background-color 140ms ease-out; }
 .policy-item summary::-webkit-details-marker { display: none; }
-.policy-item summary:hover { background: rgba(120,120,128,.12); }
+.policy-item summary:hover { background: rgba(120,120,128,.1); }
+.policy-item summary:active { background: rgba(120,120,128,.17); }
+.policy-item summary:focus-visible { outline: 2px solid var(--blue); outline-offset: -3px; }
 .policy-number { color: var(--subtle); font: 11px var(--mono); }
 .policy-label { font-weight: 700; }
-.policy-chevron { color: var(--subtle); transition: transform .2s ease; }
+.policy-chevron { display: grid; place-items: center; width: 28px; height: 28px; color: var(--muted); border-radius: 50%; font-size: 0; transition: color 140ms ease-out, background-color 140ms ease-out, transform 260ms cubic-bezier(.22, 1, .36, 1); }
+.policy-chevron::before { content: ""; width: 7px; height: 7px; margin-top: -3px; border-right: 1.7px solid currentColor; border-bottom: 1.7px solid currentColor; transform: rotate(45deg); }
+.policy-item summary:hover .policy-chevron { color: var(--text); background: rgba(120,120,128,.12); }
 .policy-item[open] .policy-chevron { transform: rotate(180deg); }
 .policy-content { padding: 2px 18px 18px 63px; border-top: 1px solid var(--line); color: var(--muted); }
 .policy-content p { margin: 13px 0 0; }
@@ -89,7 +93,7 @@ button, input, textarea { font: inherit; }
 @media (max-width: 520px) {
   .nav-links a:first-child { display: none; }
   .extension-card { min-height: 0; }
-  .policy-item summary { grid-template-columns: 28px 1fr 18px; padding: 14px; }
+  .policy-item summary { grid-template-columns: 28px 1fr 28px; padding: 14px; }
   .policy-content { padding: 2px 14px 16px 52px; }
   .footer-inner { flex-direction: column; }
 }
